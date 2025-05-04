@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Demonlist - AnotherGDPS</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f0f0f;
+      color: #fff;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #00ffff;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: #1e1e1e;
+    }
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border: 1px solid #444;
+    }
+    th {
+      background-color: #111;
+      color: #0ff;
+    }
+    tr:nth-child(even) {
+      background-color: #2c2c2c;
+    }
+    a {
+      color: #00ffff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 14px;
+      color: #aaa;
+    }
+    img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Demonlist - AnotherGDPS</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Imagen</th>
+        <th>Nombre del nivel</th>
+        <th>ID</th>
+        <th>Creador</th>
+        <th>Dificultad</th>
+        <th>Verificador</th>
+        <th>Video</th>
+      </tr>
+    </thead>
+    <tbody id="demonlist-body">
+      <!-- Se llenará con JS -->
+    </tbody>
+  </table>
+
+  <div class="footer">Creado para AnotherGDPS © 2025</div>
+
+  <script>
+    const demonlist = [
+      {
+        nombre: "Tidal Wave",
+        id: "123456",
+        creador: "OniLinkGD",
+        dificultad: "Extreme Demon",
+        verificador: "OniLinkGD",
+        video: "https://youtu.be/abc123",
+        imagen: "https://i.redd.it/fyvxniatilwb1.jpg"
+      },
+      {
+        nombre: "Acheron",
+        id: "789101",
+        creador: "Cyclic",
+        dificultad: "Extreme Demon",
+        verificador: "Cyclic",
+        video: "https://youtu.be/xyz456",
+        imagen: "https://i.ytimg.com/vi/oh0FyZHZST8/maxresdefault.jpg"
+      },
+      {
+        nombre: "Silent Clubstep",
+        id: "112131",
+        creador: "Cyclic",
+        dificultad: "Extreme Demon",
+        verificador: "Cyclic",
+        video: "https://youtu.be/ghi789",
+        imagen: "https://i.ytimg.com/vi/GR4OMkS3SN8/hqdefault.jpg?v=62d471a6"
+      },
+      {
+        nombre: "Avernus",
+        id: "415161",
+        creador: "Zoink",
+        dificultad: "Extreme Demon",
+        verificador: "Zoink",
+        video: "https://youtu.be/jkl012",
+        imagen: "https://i.ytimg.com/vi/16Zh8jssanc/maxresdefault.jpg"
+      },
+      {
+        nombre: "Kyouki",
+        id: "718192",
+        creador: "Cyclic",
+        dificultad: "Extreme Demon",
+        verificador: "Cyclic",
+        video: "https://youtu.be/mno345",
+        imagen: "https://i.ytimg.com/vi/HV8tbGVcai4/maxresdefault.jpg"
+      },
+      {
+        nombre: "Bloodlust",
+        id: "212223",
+        creador: "Knobbelboy",
+        dificultad: "Extreme Demon",
+        verificador: "Knobbelboy",
+        video: "https://youtu.be/pqr678",
+        imagen: "https://i.ytimg.com/vi/RMibTsso-kg/maxresdefault.jpg"
+      },
+      {
+        nombre: "Spectre",
+        id: "242526",
+        creador: "Xander",
+        dificultad: "Extreme Demon",
+        verificador: "Xander",
+        video: "https://youtu.be/stu901",
+        imagen: "https://i.ytimg.com/vi/D0tp4U1sUWs/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLD7T3O57vJzzpGntsnqE5lbnV1F5w"
+      },
+      {
+        nombre: "Tunnel of Despair",
+        id: "272829",
+        creador: "Exen",
+        dificultad: "Extreme Demon",
+        verificador: "Exen",
+        video: "https://youtu.be/vwx234",
+        imagen: "https://i.ytimg.com/vi/LpS4JREhW98/maxresdefault.jpg"
+      },
+      {
+        nombre: "Abyss of Darkness",
+        id: "303132",
+        creador: "Me and more",
+        dificultad: "Extreme Demon",
+        verificador: "Me and more",
+        video: "https://youtu.be/yza567",
+        imagen: "https://i.ytimg.com/vi/zjJCqqV2410/maxresdefault.jpg"
+      },
+      {
+        nombre: "Slaughterhouse",
+        id: "333435",
+        creador: "Jax",
+        dificultad: "Extreme Demon",
+        verificador: "Jax",
+        video: "https://youtu.be/bcd890",
+        imagen: "https://i.ytimg.com/vi/7W5bZJY2IPI/maxresdefault.jpg"
+      }
+    ];
+
+    const tableBody = document.getElementById("demonlist-body");
+
+    demonlist.forEach((nivel, index) => {
+      const row = document.createElement("tr");
+
+      row.innerHTML = `
+        <td>${index + 1}</td>
+        <td><img src="${nivel.imagen}" alt="${nivel.nombre}"></td>
+        <td>${nivel.nombre}</td>
+        <td>${nivel.id}</td>
+        <td>${nivel.creador}</td>
+        <td>${nivel.dificultad}</td>
+        <td>${nivel.verificador}</td>
+        <td><a href="${nivel.video}" target="_blank">Ver</a></td>
+      `;
+
+      tableBody.appendChild(row);
+    });
+  </script>
+</body>
+</html>
