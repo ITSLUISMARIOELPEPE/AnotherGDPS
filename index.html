@@ -4,11 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Demonlist - AnotherGDPS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #0f0f0f;
-      color: #fff;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(145deg, #0a0a0a, #151515);
+      color: #e0e0e0;
       margin: 0;
       padding: 20px;
     }
@@ -16,33 +17,39 @@
     h1 {
       text-align: center;
       color: #00ffff;
-      margin-bottom: 30px;
+      font-size: 2.5em;
+      text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
     }
 
     .card-container {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 24px;
       justify-content: center;
+      margin-top: 30px;
     }
 
     .card {
-      background-color: #1e1e1e;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      background-color: #1b1b1b;
+      border-radius: 15px;
+      border: 2px solid;
+      border-image: linear-gradient(45deg, #00ffff, #9d00ff) 1;
       overflow: hidden;
       width: 320px;
-      transition: transform 0.2s ease;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .card:hover {
-      transform: scale(1.03);
+      transform: translateY(-5px);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
     }
 
     .card img {
       width: 100%;
       height: 180px;
       object-fit: cover;
+      border-bottom: 2px solid #00ffff;
     }
 
     .card-content {
@@ -51,31 +58,36 @@
 
     .card-content h2 {
       color: #00ffff;
-      margin: 0 0 10px;
-      font-size: 20px;
+      font-size: 1.3em;
+      margin-bottom: 10px;
     }
 
     .card-content p {
       margin: 6px 0;
+      color: #ccc;
     }
 
     .card-content a {
       display: inline-block;
       margin-top: 10px;
-      color: #00ffff;
+      background: linear-gradient(to right, #00ffff, #9d00ff);
+      color: #000;
+      padding: 8px 14px;
+      border-radius: 6px;
       text-decoration: none;
       font-weight: bold;
+      transition: background 0.3s ease;
     }
 
     .card-content a:hover {
-      text-decoration: underline;
+      background: linear-gradient(to right, #00ccff, #bb00ff);
     }
 
     .footer {
       text-align: center;
-      margin-top: 40px;
+      margin-top: 50px;
       font-size: 14px;
-      color: #aaa;
+      color: #777;
     }
   </style>
 </head>
@@ -83,7 +95,7 @@
   <h1>Demonlist - AnotherGDPS</h1>
 
   <div class="card-container" id="card-container">
-    <!-- Se llenará con JS -->
+    <!-- Tarjetas generadas con JS -->
   </div>
 
   <div class="footer">Creado para AnotherGDPS © 2025</div>
@@ -96,7 +108,7 @@
         creador: "SibrianZ",
         dificultad: "Extreme Demon",
         verificador: "N/A",
-        video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
+        video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
         imagen: "https://i.ytimg.com/vi/VW-kJz3UJMQ/maxresdefault.jpg"
       },
       {
@@ -115,7 +127,7 @@
         dificultad: "Extreme Demon",
         verificador: "Cyclic",
         video: "https://youtu.be/ghi789",
-        imagen: "https://i.ytimg.com/vi/GR4OMkS3SN8/hqdefault.jpg?v=62d471a6"
+        imagen: "https://i.ytimg.com/vi/GR4OMkS3SN8/hqdefault.jpg"
       },
       {
         nombre: "Avernus",
@@ -151,7 +163,7 @@
         dificultad: "Extreme Demon",
         verificador: "Xander",
         video: "https://youtu.be/stu901",
-        imagen: "https://i.ytimg.com/vi/D0tp4U1sUWs/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLD7T3O57vJzzpGntsnqE5lbnV1F5w"
+        imagen: "https://i.ytimg.com/vi/D0tp4U1sUWs/hq720.jpg"
       },
       {
         nombre: "Tunnel of Despair",
@@ -196,7 +208,7 @@
           <p><strong>Creador:</strong> ${nivel.creador}</p>
           <p><strong>Dificultad:</strong> ${nivel.dificultad}</p>
           <p><strong>Verificador:</strong> ${nivel.verificador}</p>
-          <a href="${nivel.video}" target="_blank">Ver video</a>
+          <a href="${nivel.video}" target="_blank">▶ Ver video</a>
         </div>
       `;
 
