@@ -12,68 +12,79 @@
       margin: 0;
       padding: 20px;
     }
+
     h1 {
       text-align: center;
       color: #00ffff;
+      margin-bottom: 30px;
     }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
+
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .card {
       background-color: #1e1e1e;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+      width: 320px;
+      transition: transform 0.2s ease;
     }
-    th, td {
-      padding: 12px;
-      text-align: center;
-      border: 1px solid #444;
+
+    .card:hover {
+      transform: scale(1.03);
     }
-    th {
-      background-color: #111;
-      color: #0ff;
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
     }
-    tr:nth-child(even) {
-      background-color: #2c2c2c;
+
+    .card-content {
+      padding: 16px;
     }
-    a {
+
+    .card-content h2 {
+      color: #00ffff;
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .card-content p {
+      margin: 6px 0;
+    }
+
+    .card-content a {
+      display: inline-block;
+      margin-top: 10px;
       color: #00ffff;
       text-decoration: none;
+      font-weight: bold;
     }
-    a:hover {
+
+    .card-content a:hover {
       text-decoration: underline;
     }
+
     .footer {
       text-align: center;
-      margin-top: 30px;
+      margin-top: 40px;
       font-size: 14px;
       color: #aaa;
-    }
-    img {
-      width: 80px;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 5px;
     }
   </style>
 </head>
 <body>
   <h1>Demonlist - AnotherGDPS</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Imagen</th>
-        <th>Nombre del nivel</th>
-        <th>ID</th>
-        <th>Creador</th>
-        <th>Dificultad</th>
-        <th>Verificador</th>
-        <th>Video</th>
-      </tr>
-    </thead>
-    <tbody id="demonlist-body">
-      <!-- Se llenará con JS -->
-    </tbody>
-  </table>
+
+  <div class="card-container" id="card-container">
+    <!-- Se llenará con JS -->
+  </div>
 
   <div class="footer">Creado para AnotherGDPS © 2025</div>
 
@@ -171,23 +182,25 @@
       }
     ];
 
-    const tableBody = document.getElementById("demonlist-body");
+    const container = document.getElementById("card-container");
 
     demonlist.forEach((nivel, index) => {
-      const row = document.createElement("tr");
+      const card = document.createElement("div");
+      card.className = "card";
 
-      row.innerHTML = `
-        <td>${index + 1}</td>
-        <td><img src="${nivel.imagen}" alt="${nivel.nombre}"></td>
-        <td>${nivel.nombre}</td>
-        <td>${nivel.id}</td>
-        <td>${nivel.creador}</td>
-        <td>${nivel.dificultad}</td>
-        <td>${nivel.verificador}</td>
-        <td><a href="${nivel.video}" target="_blank">Ver</a></td>
+      card.innerHTML = `
+        <img src="${nivel.imagen}" alt="${nivel.nombre}">
+        <div class="card-content">
+          <h2>#${index + 1} - ${nivel.nombre}</h2>
+          <p><strong>ID:</strong> ${nivel.id}</p>
+          <p><strong>Creador:</strong> ${nivel.creador}</p>
+          <p><strong>Dificultad:</strong> ${nivel.dificultad}</p>
+          <p><strong>Verificador:</strong> ${nivel.verificador}</p>
+          <a href="${nivel.video}" target="_blank">Ver video</a>
+        </div>
       `;
 
-      tableBody.appendChild(row);
+      container.appendChild(card);
     });
   </script>
 </body>
